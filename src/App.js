@@ -1,33 +1,40 @@
-import userEvent from '@testing-library/user-event';
-import React from 'react';
+import React from "react";
+import styled from "styled-components";
 
-//Componente
-function Avatar(props) {
-    return (
-        <div>
-            <img src={props.user.url} alt={props.user.name} />
-            <br />
-            <span>{props.user.name}</span>
-        </div>
-    )
-}
+const Site = styled.div `
+    width: 400px;
+    height: 400px;
+    background-color: #00FF00;
+`
 
+//cria o componente já estilizando ele
+/*const Botao = styled.button `
+    font-size: 19px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color:${props => props.color || '#00FF00'};
+`;
+*/
+
+const Botao = styled.button `
+    font-size: 19px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color:${props => props.ativo === true ? '#0000FF' : '#CCC'};
+    color: ${props => props.ativo === true ? '#FFF' : '#000'};
+`;
 
 function App() {
-    //  Objeto
-    let user = {
-        url: "https://www.google.com.br/google.jpg",
-        name: "Adriano Misina"
-    }
+    return (    
+        <Site>
+            {/* <Botao color="#FF0000">Click Aqui!!!</Botao>
+            <Botao color="#0000FF">Click Aqui!!!</Botao>
+            <Botao>Click Aqui!!!</Botao> */}
 
-    return <>
-        {/* <BemVindo  nome="Adriano" idade="90"/>
-        <BemVindo nome="Jane" idade="30"/>
-        <BemVindo nome="Kenzo" idade="120" /> */}
-
-        {/* Componente renderizado com as carcterísticas do objeto */}
-        <Avatar user={user}/>
-    </>;
+            <Botao ativo={true}>Clique Aqui</Botao>
+            <Botao ativo={false}>Clique Aqui</Botao>
+        </Site>
+    )
 }
 
 export default App;
