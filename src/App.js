@@ -1,39 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 
-const Site = styled.div `
-    width: 400px;
-    height: 400px;
-    background-color: #00FF00;
-`
-
-//cria o componente já estilizando ele
-/*const Botao = styled.button `
-    font-size: 19px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background-color:${props => props.color || '#00FF00'};
-`;
-*/
-
-const Botao = styled.button `
-    font-size: 19px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background-color:${props => props.ativo === true ? '#0000FF' : '#CCC'};
-    color: ${props => props.ativo === true ? '#FFF' : '#000'};
+const Input = styled.input`
+    width: 400px,
+    height: 30px;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #000;
 `;
 
 function App() {
-    return (    
-        <Site>
-            {/* <Botao color="#FF0000">Click Aqui!!!</Botao>
-            <Botao color="#0000FF">Click Aqui!!!</Botao>
-            <Botao>Click Aqui!!!</Botao> */}
 
-            <Botao ativo={true}>Clique Aqui</Botao>
-            <Botao ativo={false}>Clique Aqui</Botao>
-        </Site>
+    const [email, setEmail] = useState('') // two way data buid //
+    const [senha, setSenha] = useState('')
+
+    const handleButton = () => {
+       alert(email + ' - ' + senha) 
+    }
+
+    return (    
+        <>
+            <Input placeholder="Digite seu e-mail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <br/>
+            <br/>
+            <Input placeholder="Digite sua senhal" type="password" value={senha} onChange={(e) => setSenha(e.target.value)}  />
+            <br/>
+            <br/>
+            <button onClick={handleButton}>Dizer</button>
+        </>
     )
 }
 
